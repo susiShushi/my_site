@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stan on Shushi Namba</title>
+    <link>/tags/stan/</link>
+    <description>Recent content in Stan on Shushi Namba</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="/tags/stan/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Psychological Statistics</title>
+      <link>/project/psych_statistic/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0900</pubDate>
+      
+      <guid>/project/psych_statistic/</guid>
+      <description>心理統計のやつ</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Shushi Namba</title>
+    <link>/publication/</link>
+    <description>Recent content in Publications on Shushi Namba</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title> Dynamic displays enhance the ability to discriminate genuine and posed facial expressions of emotion</title>
+      <link>/publication/dynamic_recognition/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0900</pubDate>
+      
+      <guid>/publication/dynamic_recognition/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spontaneous Facial Expressions Reveal New Action Units for the Sad Experiences</title>
+      <link>/publication/sad_face/</link>
+      <pubDate>Sun, 10 Sep 2017 00:00:00 +0900</pubDate>
+      
+      <guid>/publication/sad_face/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spontaneous Facial Expressions Are Different from Posed Facial Expressions: Morphological Properties and Dynamic Sequences</title>
+      <link>/publication/spon_pos/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0900</pubDate>
+      
+      <guid>/publication/spon_pos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spontaneous Facial Expressions Reveal New Action Units for the Sad Experiences</title>
+      <link>/publication/spontaneous_map/</link>
+      <pubDate>Wed, 10 May 2017 00:00:00 +0900</pubDate>
+      
+      <guid>/publication/spontaneous_map/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

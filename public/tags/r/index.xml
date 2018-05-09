@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Shushi Namba</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on Shushi Namba</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 10 May 2018 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BlogdownでHPを作った</title>
+      <link>/post/getting-started/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0900</pubDate>
+      
+      <guid>/post/getting-started/</guid>
+      <description> もうタイトルに書いてある通りなんだけどね。RでHP作ってみたわけですよ。
+そんでblogdownてパッケージでせこせこ作ったのがこのサイトです。
+My favorite Nico-chan こういうのも作れる.あぁもうR最高やな！？
+   </description>
+    </item>
+    
+    <item>
+      <title>Psychological Statistics</title>
+      <link>/project/psych_statistic/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0900</pubDate>
+      
+      <guid>/project/psych_statistic/</guid>
+      <description>心理統計のやつ</description>
+    </item>
+    
+  </channel>
+</rss>
