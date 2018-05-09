@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Shushi Namba</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Shushi Namba</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BlogdownでHPを作った</title>
+      <link>/post/getting-started/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0900</pubDate>
+      
+      <guid>/post/getting-started/</guid>
+      <description> もうタイトルに書いてある通りなんだけどね。RでHP作ってみたわけですよ。
+そんでblogdownてパッケージでせこせこ作ったのがこのサイトです。
+My favorite Nico-chan こういうのも作れる.あぁもうR最高やな！？
+ </description>
+    </item>
+    
+  </channel>
+</rss>
