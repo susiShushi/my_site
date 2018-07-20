@@ -11,6 +11,237 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>blavaanやってみよう_1</title>
+      <link>/post/blav1/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0900</pubDate>
+      
+      <guid>/post/blav1/</guid>
+      <description>
+
+&lt;p&gt;どうも。&lt;/p&gt;
+
+&lt;p&gt;今日は&lt;strong&gt;blavaan&lt;/strong&gt;とよばれるベイズを用いた　
+  共分散構造分析の可能なパッケージを紹介します。　
+  解説記事にありがちですが、&lt;a href=&#34;https://faculty.missouri.edu/~merklee/blavaan/&#34; target=&#34;_blank&#34;&gt;本家&lt;/a&gt;を確認するのがもっとも&lt;br /&gt;
+  学習の近道ですのであしからず。&lt;/p&gt;
+
+&lt;p&gt;もちろんベイズを用いたSEMはMplusでもできるわけです。　
+  しかし、blavaanを用いると以下の利点があります。&lt;br /&gt;
+  1. blavaanの利点
+    1. 情報量基準がいっぱい簡単に出せる
+    2. Rでできる
+    3．アルゴリズム的な問題をクリアできる→&lt;a href=&#34;https://www.jstatsoft.org/article/view/v085i04&#34; target=&#34;_blank&#34;&gt;詳細3pあたり&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;十分な利点を確認したところで、blavaanを使っていきましょう。　
+  ちなみにblavaanでは&lt;a href=&#34;http://mcmc-jags.sourceforge.net/&#34; target=&#34;_blank&#34;&gt;JAGS&lt;/a&gt;を用いてMCMCするので
+  事前にJAGSをインストールしてrjagsもインストールしときましょう。&lt;/p&gt;
+
+&lt;h2 id=&#34;インストール&#34;&gt;インストール&lt;/h2&gt;
+
+&lt;p&gt;まず、インストール。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r:install&#34;&gt;install.packages(&amp;quot;blavaan&amp;quot;, dependencies = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;おわり。　　&lt;/p&gt;
+
+&lt;h2 id=&#34;cfa&#34;&gt;CFA&lt;/h2&gt;
+
+&lt;p&gt;今回はシンプルなCFAについて紹介します。&lt;br /&gt;
+  ここではblavaanの先輩、&lt;a href=&#34;http://lavaan.ugent.be/&#34; target=&#34;_blank&#34;&gt;lavaan&lt;/a&gt;の&lt;a href=&#34;http://lavaan.ugent.be/tutorial/cfa.html&#34; target=&#34;_blank&#34;&gt;チュートリアル&lt;/a&gt;を用います。&lt;br /&gt;
+  使うのはHolzingerSwineford1939というデータセットです。&lt;/p&gt;
+
+&lt;p&gt;2種類の学校による3因子の能力を測定したデータです。項目は9種類です。&lt;br /&gt;
+  詳しくは&lt;a href=&#34;https://www.rdocumentation.org/packages/lavaan/versions/0.6-1.1240/topics/HolzingerSwineford1939&#34; target=&#34;_blank&#34;&gt;ここ&lt;/a&gt;かヘルプを確認。&lt;br /&gt;
+  lavaanのチュートリアルで&lt;strong&gt;cfa()&lt;/strong&gt;と書いてある部分を&lt;strong&gt;bcfa()&lt;/strong&gt;に変えるだけ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r:bcfa&#34;&gt;library(blavaan)
+
+# 3つの因子でモデル特定
+HS.model &amp;lt;- &#39; visual  =~ x1 + x2 + x3      
+              textual =~ x4 + x5 + x6
+              speed   =~ x7 + x8 + x9 &#39;
+
+# 推定
+fit &amp;lt;- bcfa(HS.model, data=HolzingerSwineford1939)
+
+# 結果を見る
+summary(fit, fit.measures=TRUE)
+fitMeasures(fit)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;そんで出した結果が以下の通り。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r:result&#34;&gt;summary(fit, fit.measures=TRUE)
+
+## blavaan (0.3-2) results of 10000 samples after 5000 adapt/burnin iterations
+## 
+##   Number of observations                           301
+## 
+##   Number of missing patterns                         1
+## 
+##   Statistic                                 MargLogLik         PPP
+##   Value                                      -3874.312       0.000
+## 
+## Parameter Estimates:
+## 
+## 
+## Latent Variables:
+##                    Estimate  Post.SD  HPD.025  HPD.975     PSRF
+##   visual =~                                                    
+##     x1                1.000                                    
+##     x2                0.590    0.119    0.354    0.821    1.003
+##     x3                0.779    0.131    0.525    1.036    1.004
+##   textual =~                                                   
+##     x4                1.000                                    
+##     x5                1.130    0.069    0.996    1.263    1.002
+##     x6                0.941    0.060    0.824    1.058    1.001
+##   speed =~                                                     
+##     x7                1.000                                    
+##     x8                1.232    0.165    0.921    1.557    1.002
+##     x9                1.177    0.221    0.789    1.628    1.010
+##     Prior     
+##               
+##               
+##  dnorm(0,1e-2)
+##  dnorm(0,1e-2)
+##               
+##               
+##  dnorm(0,1e-2)
+##  dnorm(0,1e-2)
+##               
+##               
+##  dnorm(0,1e-2)
+##  dnorm(0,1e-2)
+## 
+## Covariances:
+##                    Estimate  Post.SD  HPD.025  HPD.975     PSRF
+##   visual ~~                                                    
+##     textual           0.386    0.081    0.232    0.546    1.003
+##     speed             0.245    0.053    0.143    0.351    1.001
+##   textual ~~                                                   
+##     speed             0.164    0.048    0.076    0.261    1.000
+##     Prior     
+##               
+##  dwish(iden,4)
+##  dwish(iden,4)
+##               
+##  dwish(iden,4)
+## 
+## Intercepts:
+##                    Estimate  Post.SD  HPD.025  HPD.975     PSRF
+##    .x1                4.936    0.067    4.803    5.066    1.001
+##    .x2                6.088    0.068    5.955    6.222    1.001
+##    .x3                2.251    0.065     2.12    2.375    1.000
+##    .x4                3.062    0.067    2.931    3.192    1.001
+##    .x5                4.342    0.075    4.196    4.488    1.001
+##    .x6                2.187    0.064    2.064    2.312    1.001
+##    .x7                4.187    0.063    4.066    4.313    1.000
+##    .x8                5.528    0.059    5.413    5.641    1.000
+##    .x9                5.375    0.058    5.262     5.49    1.000
+##     visual            0.000                                    
+##     textual           0.000                                    
+##     speed             0.000                                    
+##     Prior     
+##  dnorm(0,1e-3)
+##  dnorm(0,1e-3)
+##  dnorm(0,1e-3)
+##  dnorm(0,1e-3)
+##  dnorm(0,1e-3)
+##  dnorm(0,1e-3)
+##  dnorm(0,1e-3)
+##  dnorm(0,1e-3)
+##  dnorm(0,1e-3)
+##               
+##               
+##               
+## 
+## Variances:
+##                    Estimate  Post.SD  HPD.025  HPD.975     PSRF
+##    .x1                0.594    0.121    0.358    0.831    1.006
+##    .x2                1.136    0.106    0.936    1.345    1.001
+##    .x3                0.836    0.099    0.644    1.032    1.001
+##    .x4                0.384    0.050    0.288    0.482    1.001
+##    .x5                0.453    0.060    0.337     0.57    1.000
+##    .x6                0.362    0.046    0.276    0.455    1.000
+##    .x7                0.829    0.090     0.66     1.01    1.001
+##    .x8                0.509    0.095    0.324    0.696    1.002
+##    .x9                0.554    0.094    0.365    0.738    1.006
+##     visual            0.760    0.151    0.473    1.059    1.006
+##     textual           0.963    0.114    0.754    1.195    1.001
+##     speed             0.357    0.085    0.198    0.526    1.007
+##     Prior     
+##   dgamma(1,.5)
+##   dgamma(1,.5)
+##   dgamma(1,.5)
+##   dgamma(1,.5)
+##   dgamma(1,.5)
+##   dgamma(1,.5)
+##   dgamma(1,.5)
+##   dgamma(1,.5)
+##   dgamma(1,.5)
+##  dwish(iden,4)
+##  dwish(iden,4)
+##  dwish(iden,4)
+
+
+fitMeasures(fit)
+
+##       npar       logl        ppp        bic        dic      p_dic 
+##     30.000  -3738.244      0.000   7647.601   7535.522     29.517 
+##       waic     p_waic      looic      p_loo margloglik 
+##   7539.155     32.534   7539.212     32.562  -3874.312
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;おわり。　　&lt;/p&gt;
+
+&lt;h2 id=&#34;事前分布の変更&#34;&gt;事前分布の変更&lt;/h2&gt;
+
+&lt;p&gt;MCMCの長さにくじけたので今回は次の事前分布の変更だけして終わります。&lt;br /&gt;
+  事前分布は&lt;strong&gt;dp&lt;/strong&gt;によって変更可能です。
+  デフォルトの設定は&lt;strong&gt;dpriors()&lt;/strong&gt;で確認するか&lt;br /&gt;
+  &lt;a href=&#34;https://faculty.missouri.edu/~merklee/blavaan/prior.html&#34; target=&#34;_blank&#34;&gt;こちら&lt;/a&gt;で確認してください。&lt;/p&gt;
+
+&lt;p&gt;ぼくはHolzingerSwineford1939というデータセットについて一切知りませんが、&lt;br /&gt;
+  今回測定した項目の最大値が異なる場合，正規性の仮定が脅かされることがあるらしいです。&lt;br /&gt;
+  今回は最大値が異なるということにしましょう。&lt;br /&gt;
+  さてこれは困りました。&lt;/p&gt;
+
+&lt;p&gt;というわけでその点について以下のようにモデルに情報を加えましょう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r:modified&#34;&gt;
+# 事前分布を操作して最大値を調整
+modHS.model &amp;lt;- c(HS.model, 
+            &#39; x1  ~~ prior(&amp;quot;dunif(0,4.5)[sd]&amp;quot;)*x1
+              x2  ~~ prior(&amp;quot;dunif(0,5)[sd]&amp;quot;)*x2
+              x3  ~~ prior(&amp;quot;dunif(0,2.5)[sd]&amp;quot;)*x3
+              x4  ~~ prior(&amp;quot;dunif(0,3.5)[sd]&amp;quot;)*x4
+              x5  ~~ prior(&amp;quot;dunif(0,3.5)[sd]&amp;quot;)*x5
+              x6  ~~ prior(&amp;quot;dunif(0,3)[sd]&amp;quot;)*x6
+              x7  ~~ prior(&amp;quot;dunif(0,4)[sd]&amp;quot;)*x7
+              x8  ~~ prior(&amp;quot;dunif(0,5)[sd]&amp;quot;)*x8
+              x9  ~~ prior(&amp;quot;dunif(0,4.5)[sd]&amp;quot;)*x9&#39;)
+
+# 推定
+modfit &amp;lt;- bcfa(modHS.model, data=HolzingerSwineford1939)
+
+# 結果を比較
+summary(modfit, fit.measures=TRUE)
+blavCompare(fit,modfit)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ここでは, 項目の最大値に関する情報を項目ごとに与えました。&lt;br /&gt;
+  最大値の半分までの範囲を持つ一様分布を各項目に設定しました。&lt;br /&gt;
+  面倒なんでこのコードは自分で確認してませんが、そんな劇的に結果は変わらないと思います。&lt;/p&gt;
+
+&lt;p&gt;事前分布を色々変えることで色々なことがblavaanではできます。
+  今日はここまで。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title> Dynamic displays enhance the ability to discriminate genuine and posed facial expressions of emotion</title>
       <link>/publication/dynamic_recognition/</link>
       <pubDate>Thu, 10 May 2018 00:00:00 +0900</pubDate>

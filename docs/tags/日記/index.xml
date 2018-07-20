@@ -7,10 +7,32 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Thu, 10 May 2018 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 20 Jul 2018 00:00:00 +0900</lastBuildDate>
     
 	<atom:link href="/tags/%E6%97%A5%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>blavaanやってみよう_1</title>
+      <link>/post/blav1/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0900</pubDate>
+      
+      <guid>/post/blav1/</guid>
+      <description>どうも。
+今日はblavaanとよばれるベイズを用いた　共分散構造分析の可能なパッケージを紹介します。　解説記事にありがちですが、本家を確認するのがもっとも
+学習の近道ですのであしからず。
+もちろんベイズを用いたSEMはMplusでもできるわけです。　しかし、blavaanを用いると以下の利点があります。
+1. blavaanの利点 1. 情報量基準がいっぱい簡単に出せる 2. Rでできる 3．アルゴリズム的な問題をクリアできる→詳細3pあたり
+十分な利点を確認したところで、blavaanを使っていきましょう。　ちなみにblavaanではJAGSを用いてMCMCするので 事前にJAGSをインストールしてrjagsもインストールしときましょう。
+インストール まず、インストール。
+install.packages(&amp;quot;blavaan&amp;quot;, dependencies = TRUE)  おわり。　CFA 今回はシンプルなCFAについて紹介します。
+ここではblavaanの先輩、lavaanのチュートリアルを用います。
+使うのはHolzingerSwineford1939というデータセットです。
+2種類の学校による3因子の能力を測定したデータです。項目は9種類です。
+詳しくはここかヘルプを確認。
+lavaanのチュートリアルでcfa()と書いてある部分をbcfa()に変えるだけ。
+library(blavaan) # 3つの因子でモデル特定 HS.model &amp;lt;- &#39; visual =~ x1 + x2 + x3 textual =~ x4 + x5 + x6 speed =~ x7 + x8 + x9 &#39; # 推定 fit &amp;lt;- bcfa(HS.model, data=HolzingerSwineford1939) # 結果を見る summary(fit, fit.</description>
+    </item>
     
     <item>
       <title>BlogdownでHPを作った</title>
