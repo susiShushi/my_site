@@ -5,7 +5,7 @@ date = 2018-07-20T00:00:00
 lastmod = 2018-07-20T00:00:00
 draft = false
 
-tags = ["R","日記"]
+tags = ["R","日記","blavaan"]
 summary = "blavaanというパッケージを使ってみた話."
 
 [header]
